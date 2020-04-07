@@ -1,13 +1,13 @@
-package ray.springframework.test.sfrpetclinic;
+package ray.springframework.sfrpetclinic;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SfrPetClinicApplicationTests {
+public class SfrPetClinicApplicationTest {
 
     @Test
-    void contextLoads() {
+    public void contextLoads() {
     }
 
 }

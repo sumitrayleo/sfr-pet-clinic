@@ -1,4 +1,4 @@
-package ray.springframework.test.sfrpetclinic;
+package ray.springframework.sfrpetclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

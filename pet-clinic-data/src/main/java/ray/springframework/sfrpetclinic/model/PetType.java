@@ -1,4 +1,4 @@
-package ray.springframework.test.sfrpetclinic.model;
+package ray.springframework.sfrpetclinic.model;
 
 public class PetType {
     private String name;
