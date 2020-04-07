@@ -16,7 +16,7 @@
 
     <groupId>ray.springframework.test</groupId>
     <artifactId>sfr-pet-clinic</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>sfr-pet-clinic</name>
     <description>Rays version of Pet Clinic</description>
 
@@ -44,7 +44,7 @@
     <scm>
         <!--url>scm:git:https://github.com/sumitrayleo/sfr-pet-clinic.git</url-->
         <developerConnection>scm:git:https://github.com/sumitrayleo/sfr-pet-clinic.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>sfr-pet-clinic-0.0.1</tag>
     </scm>
 
 </project>
