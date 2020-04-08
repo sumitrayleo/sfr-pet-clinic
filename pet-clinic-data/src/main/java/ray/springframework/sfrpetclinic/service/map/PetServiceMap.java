@@ -1,11 +1,11 @@
 package ray.springframework.sfrpetclinic.service.map;
 
 import ray.springframework.sfrpetclinic.model.Pet;
-import ray.springframework.sfrpetclinic.service.CrudService;
+import ray.springframework.sfrpetclinic.service.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Pet findById(Long id) {
         return super.findById(id);
