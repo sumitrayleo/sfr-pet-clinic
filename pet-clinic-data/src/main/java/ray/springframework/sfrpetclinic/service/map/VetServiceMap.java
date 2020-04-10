@@ -1,13 +1,21 @@
 package ray.springframework.sfrpetclinic.service.map;
 
 import org.springframework.stereotype.Service;
+import ray.springframework.sfrpetclinic.model.Specialty;
 import ray.springframework.sfrpetclinic.model.Vet;
+import ray.springframework.sfrpetclinic.service.SpecialtyService;
 import ray.springframework.sfrpetclinic.service.VetService;
 
 import java.util.Set;
 
 @Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+    private final SpecialtyService specialtyService;
+
+    public VetServiceMap(SpecialtyService specialtyService) {
+        this.specialtyService = specialtyService;
+    }
+
     @Override
     public Vet findById(Long id) {
         return super.findById(id);
@@ -15,6 +23,16 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet vet) {
+
+        if(vet != null){
+            vet.getSpecialties().forEach(specialty -> {
+                if(specialty.getId() == null){
+                    Specialty savedSpecialty = specialtyService.save(specialty);
+                    specialty.setId(savedSpecialty.getId());
+                }
+            });
+        }
+
         return super.save(vet);
     }
 
