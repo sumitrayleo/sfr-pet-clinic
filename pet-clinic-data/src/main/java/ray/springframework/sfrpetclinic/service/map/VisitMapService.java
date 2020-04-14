@@ -1,5 +1,6 @@
 package ray.springframework.sfrpetclinic.service.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import ray.springframework.sfrpetclinic.model.Visit;
 import ray.springframework.sfrpetclinic.service.VisitService;
@@ -7,6 +8,7 @@ import ray.springframework.sfrpetclinic.service.VisitService;
 import java.util.Set;
 
 @Service
+@Profile({"default", "mock"})
 public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
     @Override
     public Visit findById(Long id) {

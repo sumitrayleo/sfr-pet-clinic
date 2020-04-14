@@ -1,5 +1,6 @@
 package ray.springframework.sfrpetclinic.service.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import ray.springframework.sfrpetclinic.model.PetType;
 import ray.springframework.sfrpetclinic.service.PetTypeService;
@@ -7,6 +8,7 @@ import ray.springframework.sfrpetclinic.service.PetTypeService;
 import java.util.Set;
 
 @Service
+@Profile({"default", "mock"})
 public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
     @Override
     public PetType findById(Long id) {

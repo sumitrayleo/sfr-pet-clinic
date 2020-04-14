@@ -104,7 +104,7 @@ public class DataLoader implements CommandLineRunner {
     private Specialty getSpecialty(String specialtyDesc) {
         Specialty specialty = new Specialty();
         specialty.setDescription(specialtyDesc);
-        return specialty;
+        return specialtyService.save(specialty);
     }
 
     private PetType getPetType(String petName) {
