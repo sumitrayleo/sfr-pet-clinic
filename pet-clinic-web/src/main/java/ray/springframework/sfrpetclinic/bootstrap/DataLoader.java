@@ -3,10 +3,7 @@ package ray.springframework.sfrpetclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ray.springframework.sfrpetclinic.model.*;
-import ray.springframework.sfrpetclinic.service.OwnerService;
-import ray.springframework.sfrpetclinic.service.PetTypeService;
-import ray.springframework.sfrpetclinic.service.SpecialtyService;
-import ray.springframework.sfrpetclinic.service.VetService;
+import ray.springframework.sfrpetclinic.service.*;
 
 import java.time.LocalDate;
 
@@ -17,12 +14,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService){
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService){
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -57,6 +56,8 @@ public class DataLoader implements CommandLineRunner {
         owner1.getPets().add(rajivsDog);
         ownerService.save(owner1);
 
+        visitService.save(getVisit(rajivsDog, "Sick Dog"));
+
         Owner owner2 = new Owner();
         owner2.setFirstName("Mark");
         owner2.setLastName("Cocoo");
@@ -64,13 +65,15 @@ public class DataLoader implements CommandLineRunner {
         owner2.setCity("St Louis");
         owner2.setTelephone("12376543");
 
-        Pet marksCast = new Pet();
-        marksCast.setName("Milo");
-        marksCast.setDateOfBirth(LocalDate.now());
-        marksCast.setOwner(owner2);
-        marksCast.setPetType(savedCatPetType);
-        owner2.getPets().add(marksCast);
+        Pet marksCat = new Pet();
+        marksCat.setName("Milo");
+        marksCat.setDateOfBirth(LocalDate.now());
+        marksCat.setOwner(owner2);
+        marksCat.setPetType(savedCatPetType);
+        owner2.getPets().add(marksCat);
         ownerService.save(owner2);
+
+        visitService.save(getVisit(marksCat, "Sneezy Cat"));
 
         System.out.println("Added 2 Owners ....");
 
@@ -87,6 +90,15 @@ public class DataLoader implements CommandLineRunner {
         vetService.save(vet2);
 
         System.out.println("Added 2 Vets ....");
+    }
+
+    private Visit getVisit(Pet marksCat, String description) {
+        Visit visit = new Visit();
+        visit.setPet(marksCat);
+        visit.setDate(LocalDate.now());
+        visit.setDescription(description);
+
+        return visit;
     }
 
     private Specialty getSpecialty(String specialtyDesc) {
