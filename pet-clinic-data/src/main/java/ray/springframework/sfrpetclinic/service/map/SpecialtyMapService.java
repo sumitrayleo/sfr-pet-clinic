@@ -7,7 +7,7 @@ import ray.springframework.sfrpetclinic.service.SpecialtyService;
 import java.util.Set;
 
 @Service
-public class SpecialtyServiceMap extends AbstractMapService<Specialty, Long> implements SpecialtyService {
+public class SpecialtyMapService extends AbstractMapService<Specialty, Long> implements SpecialtyService {
     @Override
     public Specialty findById(Long id) {
         return super.findById(id);
