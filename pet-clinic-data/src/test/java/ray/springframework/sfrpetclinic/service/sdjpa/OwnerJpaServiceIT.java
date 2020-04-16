@@ -23,7 +23,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class OwnerJpaServiceTest {
+class OwnerJpaServiceIT {
     public static final String LAST_NAME = "Ray";
 
     @Mock

@@ -7,7 +7,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class SfrPetClinicApplicationTest {
+public class SfrPetClinicApplicationIT {
 
     @Test
     public void contextLoads() {
